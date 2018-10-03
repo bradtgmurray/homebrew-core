@@ -20,11 +20,11 @@ class Tdlib < Formula
   test do
     (testpath/"tdjson_example.cpp").write <<~EOS
       #include "td/telegram/td_json_client.h"
-
       #include <iostream>
 
       int main() {
         void* client = td_json_client_create();
+        if (!client) return 1;
         std::cout << "Client created: " << client;
         return 0;
       }
